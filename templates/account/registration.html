@@ -1,0 +1,119 @@
+{% extends 'includes/auth_base.html' %}
+
+{% block title %}Register - Mobile Store{% endblock %}
+
+{% block content %}
+  <div class="card product-card shadow-lg" style="border-radius: 15px;">
+    <div class="card-body p-5">
+      <div class="text-center mb-5">
+        <h3 class="card-title mb-2" style="font-weight: 700; color: #333;">Create Your Account</h3>
+        <p class="text-muted">Join Mobile Store and start shopping today</p>
+      </div>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ form.non_field_errors }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="{{ form.username.id_for_label }}" class="form-label fw-500">Username</label>
+          {{ form.username }}
+          {% if form.username.errors %}
+            <div class="text-danger small mt-1">{{ form.username.errors }}</div>
+          {% endif %}
+          <small class="text-muted d-block mt-2">150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="{{ form.email.id_for_label }}" class="form-label fw-500">Email Address</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <div class="text-danger small mt-1">{{ form.email.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Name Row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="{{ form.first_name.id_for_label }}" class="form-label fw-500">First Name</label>
+              {{ form.first_name }}
+              {% if form.first_name.errors %}
+                <div class="text-danger small mt-1">{{ form.first_name.errors }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="{{ form.last_name.id_for_label }}" class="form-label fw-500">Last Name</label>
+              {{ form.last_name }}
+              {% if form.last_name.errors %}
+                <div class="text-danger small mt-1">{{ form.last_name.errors }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+          <label for="{{ form.phone_no.id_for_label }}" class="form-label fw-500">Phone Number</label>
+          {{ form.phone_no }}
+          {% if form.phone_no.errors %}
+            <div class="text-danger small mt-1">{{ form.phone_no.errors }}</div>
+          {% endif %}
+        </div>
+
+        <hr style="border-color: #e0e0e0; margin: 2rem 0;">
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="{{ form.password1.id_for_label }}" class="form-label fw-500">Password</label>
+          {{ form.password1 }}
+          {% if form.password1.errors %}
+            <div class="text-danger small mt-1">{{ form.password1.errors }}</div>
+          {% endif %}
+          <small class="text-muted d-block mt-2">
+            <strong>Password requirements:</strong>
+            <ul class="mb-0 ps-3">
+              <li>At least 8 characters long</li>
+              <li>Cannot be too similar to your personal info</li>
+              <li>Cannot be a commonly used password</li>
+              <li>Cannot be entirely numeric</li>
+            </ul>
+          </small>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-4">
+          <label for="{{ form.password2.id_for_label }}" class="form-label fw-500">Confirm Password</label>
+          {{ form.password2 }}
+          {% if form.password2.errors %}
+            <div class="text-danger small mt-1">{{ form.password2.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100 py-2" style="font-weight: 600; font-size: 16px;">Create Account</button>
+      </form>
+
+      <hr class="my-4" style="border-color: #e0e0e0;">
+
+      <!-- Login Link -->
+      <div class="text-center">
+        <p class="text-muted mb-3">Already have an account?</p>
+        <a href="{% url 'login' %}" class="btn btn-outline-secondary w-100 py-2" style="font-weight: 600;">Login Here</a>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="text-decoration-none text-primary" style="font-size: 14px;">Back to Home</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
