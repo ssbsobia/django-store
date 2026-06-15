@@ -1,0 +1,48 @@
+# === Python Caches & Compiled Files ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# === Virtual Environments ===
+.venv/
+venv/
+env/
+ENV/
+.env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# === Django Specifics ===
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# === Media & Static Uploads ===
+# Ignore user-uploaded media files in production
+media/
+# Ignore collected static files (uncomment if you run collectstatic locally)
+# static_cdn/
+# static/
+
+# === Secrets & Environment Variables ===
+.env
+.env.local
+.env.*
+secrets.json
+
+# === IDE & Editor Settings ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# === OS Generated Files ===
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db

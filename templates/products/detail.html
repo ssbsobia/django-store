@@ -1,0 +1,48 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}{{ product.name }} - Mobile Store{% endblock %}
+
+{% block content %}
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card product-card border-0">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" class="card-img-top product-detail-img" alt="{{ product.name }}">
+        {% else %}
+          <div class="product-detail-img d-flex align-items-center justify-content-center">No image</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card product-card h-100 p-4">
+        <div class="card-body d-flex flex-column">
+          <h2 class="card-title mb-3">{{ product.name }}</h2>
+          <p class="text-muted brand-label mb-3">{{ product.brand }}</p>
+          <p class="price mb-2">Rs {{ product.price }}</p>
+          {% if product.discount_price %}
+            <p class="text-decoration-line-through text-muted small">Rs {{ product.discount_price }}</p>
+          {% endif %}
+
+          <div class="mb-3">
+            <span class="badge bg-success me-2">{{ product.ram|default:'N/A' }} RAM</span>
+            <span class="badge bg-info text-dark me-2">{{ product.storage|default:'N/A' }} Storage</span>
+            <span class="badge bg-secondary">{{ product.color|default:'Color' }}</span>
+          </div>
+
+          <p class="mb-4">{{ product.description|default:'No description available for this product.' }}</p>
+
+          <div class="mb-3">
+            <strong>Category:</strong> {{ product.category }}<br>
+            <strong>Stock:</strong> {{ product.stock }} available<br>
+            <strong>Status:</strong> {% if product.is_available %}In stock{% else %}Out of stock{% endif %}
+          </div>
+
+          <div class="mt-auto">
+            <a href="#" class="btn btn-primary btn-lg w-100">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

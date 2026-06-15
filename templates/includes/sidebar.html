@@ -1,0 +1,24 @@
+
+
+<div class="card mb-3 sidebar-card">
+  <div class="card-header">Brands</div>
+  <ul class="list-group list-group-flush">
+    {% for brand in brands %}
+      <li class="list-group-item {% if selected_brand and selected_brand.slug == brand.slug %}active{% endif %}">
+        <a href="{% url 'brand_products' brand.slug %}" class="text-decoration-none {% if selected_brand and selected_brand.slug == brand.slug %}text-white{% else %}text-dark{% endif %}">{% if selected_brand and selected_brand.slug == brand.slug %}<strong>{% endif %}{{ brand.name }}{% if selected_brand and selected_brand.slug == brand.slug %}</strong>{% endif %}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="card sidebar-card">
+  <div class="card-header">Categories</div>
+  <ul class="list-group list-group-flush">
+    {% for category in categories %}
+      <li class="list-group-item {% if selected_category and selected_category.slug == category.slug %}active{% endif %}">
+        <a href="{% url 'category_products' category.slug %}" class="text-decoration-none {% if selected_category and selected_category.slug == category.slug %}text-white{% else %}text-dark{% endif %}">{% if selected_category and selected_category.slug == category.slug %}<strong>{% endif %}{{ category.name }}{% if selected_category and selected_category.slug == category.slug %}</strong>{% endif %}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
